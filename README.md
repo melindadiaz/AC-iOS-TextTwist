@@ -1,7 +1,7 @@
 # TextTwist
 
 
-For this assignment, you will be making your own ~Boggle~ Text Twist clone using the magic of ```UITextFieldDelegate```.
+For this assignment, you will be making your own Text Twist clone using the magic of ```UITextFieldDelegate```.
 
 ![gif](https://media.giphy.com/media/3ov9k7BAg80iXQkBji/giphy.gif)
 
