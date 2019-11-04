@@ -1,48 +1,9 @@
 # TextTwist
 
-```
- .-----------------. .----------------.  .----------------. 
-| .--------------. || .--------------. || .--------------. |
-| | ____  _____  | || |     ____     | || |  _________   | |
-| ||_   \|_   _| | || |   .'    `.   | || | |  _   _  |  | |
-| |  |   \ | |   | || |  /  .--.  \  | || | |_/ | | \_|  | |
-| |  | |\ \| |   | || |  | |    | |  | || |     | |      | |
-| | _| |_\   |_  | || |  \  `--'  /  | || |    _| |_     | |
-| ||_____|\____| | || |   `.____.'   | || |   |_____|    | |
-| |              | || |              | || |              | |
-| '--------------' || '--------------' || '--------------' |
- '----------------'  '----------------'  '----------------' 
- .----------------.  .----------------.  .----------------. 
-| .--------------. || .--------------. || .--------------. |
-| |   ______     | || |     ____     | || |    ______    | |
-| |  |_   _ \    | || |   .'    `.   | || |  .' ___  |   | |
-| |    | |_) |   | || |  /  .--.  \  | || | / .'   \_|   | |
-| |    |  __'.   | || |  | |    | |  | || | | |    ____  | |
-| |   _| |__) |  | || |  \  `--'  /  | || | \ `.___]  _| | |
-| |  |_______/   | || |   `.____.'   | || |  `._____.'   | |
-| |              | || |              | || |              | |
-| '--------------' || '--------------' || '--------------' |
- '----------------'  '----------------'  '----------------' 
- .----------------.  .----------------.  .----------------. 
-| .--------------. || .--------------. || .--------------. |
-| |    ______    | || |   _____      | || |  _________   | |
-| |  .' ___  |   | || |  |_   _|     | || | |_   ___  |  | |
-| | / .'   \_|   | || |    | |       | || |   | |_  \_|  | |
-| | | |    ____  | || |    | |   _   | || |   |  _|  _   | |
-| | \ `.___]  _| | || |   _| |__/ |  | || |  _| |___/ |  | |
-| |  `._____.'   | || |  |________|  | || | |_________|  | |
-| |              | || |              | || |              | |
-| '--------------' || '--------------' || '--------------' |
- '----------------'  '----------------'  '----------------' 
-```
-
-Plz don't sue, ~Hasbrah~ Parker Brahs.
-
-### Exercise
 
 For this assignment, you will be making your own ~Boggle~ Text Twist clone using the magic of ```UITextFieldDelegate```.
 
-![](https://media.giphy.com/media/3ov9k7BAg80iXQkBji/giphy.gif)
+![gif](https://media.giphy.com/media/3ov9k7BAg80iXQkBji/giphy.gif)
 
 ### Data:
 
@@ -72,10 +33,12 @@ class WordData {
 
 ```
 
+### Stage Zero:
+
+- Set up your UI with a text field (user input), a label (messages to the user) and 4 text views (where the correct words will be displayed)
 
 ### Stage One:
 
-- Set up your UI with a text field (user input), a label (messages to the user) and 4 text views (where the correct words will be displayed)
 - When the user types in a guess into the text field and presses *return*, they get a message if their guess was correct, or had any errors and then it gets added to the appropriate spot in the UI.
 
 ### Stage Two:
