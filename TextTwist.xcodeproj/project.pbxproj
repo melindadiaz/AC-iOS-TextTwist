@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DBAB6AE2374DEEB00D5C30C /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAB6AD2374DEEB00D5C30C /* GameBrain.swift */; };
 		5475D6C01F9ED24100AFA523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475D6BF1F9ED24100AFA523 /* AppDelegate.swift */; };
 		5475D6C21F9ED24100AFA523 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5475D6C11F9ED24100AFA523 /* ViewController.swift */; };
 		5475D6C51F9ED24100AFA523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5475D6C31F9ED24100AFA523 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DBAB6AD2374DEEB00D5C30C /* GameBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBrain.swift; sourceTree = "<group>"; };
 		5475D6BC1F9ED24100AFA523 /* TextTwist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextTwist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5475D6BF1F9ED24100AFA523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5475D6C11F9ED24100AFA523 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				5475D6D51F9EDB1A00AFA523 /* Supporting Files */,
 				5475D6D11F9ED25300AFA523 /* Data.swift */,
+				4DBAB6AD2374DEEB00D5C30C /* GameBrain.swift */,
 				5475D6D31F9ED6DC00AFA523 /* TextTwistModel.swift */,
 				5475D6C11F9ED24100AFA523 /* ViewController.swift */,
 				5475D6C31F9ED24100AFA523 /* Main.storyboard */,
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5475D6D41F9ED6DC00AFA523 /* TextTwistModel.swift in Sources */,
+				4DBAB6AE2374DEEB00D5C30C /* GameBrain.swift in Sources */,
 				5475D6C21F9ED24100AFA523 /* ViewController.swift in Sources */,
 				5475D6D21F9ED25300AFA523 /* Data.swift in Sources */,
 				5475D6C01F9ED24100AFA523 /* AppDelegate.swift in Sources */,
