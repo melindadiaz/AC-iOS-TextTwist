@@ -10,8 +10,9 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-   let gameReference = GameBrain()
-   var letterBank = [String]() {
+    let gameReference = GameBrain()
+    
+    var letterBank = [String]() {
         didSet {
             letterDisplay.text = letterBank.reduce("", +)
         }
@@ -22,7 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var resultLabel: UILabel!//label to tell validity
     
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userTextField.delegate = self
@@ -43,17 +44,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if !letterBank.contains(string) && isBackSpace != -92 { //this is how backspace is used
             resultLabel.text = "Invalid Input"
             return false
-            
         }
-        removedLetter(userInputedLetter: string)
-        let currentText = textFieldText + string
-        if gameReference.gameWords.words.contains(currentText) {
+        if isBackSpace == -92 {
+            putBackLetter(x: string)
+        } else {
+            removedLetter(userInputedLetter: string)
         }
         return true
-    
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let textFieldText = textField.text else {
+        return false
+        }
+        if gameReference.gameWords.words.contains(textFieldText) {
+            resultLabel.text = "Correct Guess! 🤡"
+            resetLetterBank()
+            textField.text = ""
+        } else {
+            resultLabel.text = "NO! Try Again!👿"
+            resetLetterBank()
+            textField.text = ""
+        }
         return true
     }
     
@@ -61,7 +74,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         guard let elementIndex = letterBank.firstIndex(of: userInputedLetter) else {
             return
         }
-        letterBank.remove(at: elementIndex)
+        gameReference.removedLetters.append(letterBank.remove(at: elementIndex))
+        
     }
+
+    func putBackLetter(x:String) {
+           let char = x.cString(using: String.Encoding.utf8)!
+           let isBackSpace = strcmp(char, "\\b")
+           if isBackSpace == -92 {
+            letterBank.append(gameReference.removedLetters.popLast() ?? "")
+           }
+       }
+    func resetLetterBank() {
+      letterBank = gameReference.setLetterBank(para: gameReference.gameWords.letters)
+        gameReference.removedLetters.removeAll()
+        
+    }
+    
 }
 

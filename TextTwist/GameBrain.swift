@@ -11,8 +11,9 @@ import Foundation
 
 class GameBrain {
     let gameWords = WordData.allInfo[Int.random(in:0...2)]
-   
     
+    var removedLetters = [String]()
+    var guessedWords = [String]()
     
     func setLetterBank(para:String) -> [String] {
         var letterBank = [String]()
@@ -25,6 +26,7 @@ class GameBrain {
         return letterBank
     }
     
+   
     
     
     
