@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
+//    WE STILL NEED TO MAKE A PLAY AGAIN MODE
+    
+    
     let gameReference = GameBrain()
     
     var letterBank = [String]() {
@@ -56,12 +59,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let textFieldText = textField.text else {
-        return false
+            return false
         }
-        if gameReference.gameWords.words.contains(textFieldText) {
+        if gameReference.guessedWords.contains(textFieldText) {
+            resultLabel.text = "Um, You said that already! 😒"
+        
+    } else if gameReference.gameWords.words.contains(textFieldText) {
             resultLabel.text = "Correct Guess! 🤡"
             resetLetterBank()
             textField.text = ""
+            gameReference.guessedWords.append(textFieldText)
         } else {
             resultLabel.text = "NO! Try Again!👿"
             resetLetterBank()
@@ -77,16 +84,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         gameReference.removedLetters.append(letterBank.remove(at: elementIndex))
         
     }
-
+    
     func putBackLetter(x:String) {
-           let char = x.cString(using: String.Encoding.utf8)!
-           let isBackSpace = strcmp(char, "\\b")
-           if isBackSpace == -92 {
+        let char = x.cString(using: String.Encoding.utf8)!
+        let isBackSpace = strcmp(char, "\\b")
+        if isBackSpace == -92 {
             letterBank.append(gameReference.removedLetters.popLast() ?? "")
-           }
-       }
+        }
+    }
     func resetLetterBank() {
-      letterBank = gameReference.setLetterBank(para: gameReference.gameWords.letters)
+        letterBank = gameReference.setLetterBank(para: gameReference.gameWords.letters)
         gameReference.removedLetters.removeAll()
         
     }
