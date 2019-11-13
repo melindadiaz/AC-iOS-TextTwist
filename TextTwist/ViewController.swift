@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-//    WE STILL NEED TO MAKE A PLAY AGAIN MODE
-    
+    //    WE STILL NEED TO
+    // display hidden and correct words && autolayout
     
     let gameReference = GameBrain()
     
@@ -23,18 +23,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var letterDisplay: UILabel!
-    
     @IBOutlet weak var resultLabel: UILabel!//label to tell validity
-    
+    @IBOutlet weak var wordsToStarsTextView: UITextView!
+    @IBOutlet weak var correctGuessedWords: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userTextField.delegate = self
         letterBank = gameReference.setLetterBank(para: gameReference.gameWords.letters)
+        gameReference.copyOfData()
+        wordsToStarsTextView.text = "\(gameReference.wordsToStars())"// or .description
+        
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
+    @IBAction func playAgain(_ sender: UIButton) {
+        gameReference.playAgain()
+        gameReference.copyOfData()
+        resetLetterBank()
+        resultLabel.text = ""
+        userTextField.text = ""
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -62,13 +69,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         if gameReference.guessedWords.contains(textFieldText) {
-            resultLabel.text = "Um, You said that already! 😒"
-        
-    } else if gameReference.gameWords.words.contains(textFieldText) {
+            resultLabel.text = "You said that already! Duh! 😒"
+            
+        } else if gameReference.copyGameWords.contains(textFieldText) {
             resultLabel.text = "Correct Guess! 🤡"
             resetLetterBank()
             textField.text = ""
             gameReference.guessedWords.append(textFieldText)
+            gameReference.removeCorrectWords(para: textFieldText)
+            correctGuessedWords.text = "\(gameReference.guessedWords)"//or .description
+            wordsToStarsTextView.text = "\(gameReference.wordsToStars())"
         } else {
             resultLabel.text = "NO! Try Again!👿"
             resetLetterBank()

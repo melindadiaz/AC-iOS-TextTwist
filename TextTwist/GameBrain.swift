@@ -10,8 +10,8 @@ import Foundation
 
 
 class GameBrain {
-    let gameWords = WordData.allInfo[Int.random(in:0...2)]
-    
+    var gameWords = WordData.allInfo[Int.random(in:0...2)]
+    var copyGameWords = [String]()
     var removedLetters = [String]()
     var guessedWords = [String]()
     
@@ -26,8 +26,32 @@ class GameBrain {
         return letterBank
     }
     
-   
+    func playAgain() {
+        guessedWords.removeAll()
+        copyGameWords.removeAll()
+        let previousGame = gameWords.letters
+        gameWords = WordData.allInfo[Int.random(in:0...2)]
+        while previousGame == gameWords.letters {
+            gameWords = WordData.allInfo[Int.random(in: 0...2)]
+        }
+    }
+    func wordsToStars() -> [String] {
+        return copyGameWords.map{(paraX: String) -> String in
+            var someString = ""
+            for _ in paraX {
+                someString += "*"
+            }
+            return someString
+        }
+    }
     
+    func removeCorrectWords(para:String) {
+        if let correctWords = copyGameWords.firstIndex(of: para) {
+            print(copyGameWords.remove(at: correctWords))
+        }
+    }
     
-    
+    func copyOfData() {
+        copyGameWords = gameWords.words
+    }
 }
