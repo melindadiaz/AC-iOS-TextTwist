@@ -47,11 +47,15 @@ class GameBrain {
     
     func removeCorrectWords(para:String) {
         if let correctWords = copyGameWords.firstIndex(of: para) {
-            print(copyGameWords.remove(at: correctWords))
+            copyGameWords.remove(at: correctWords)
         }
     }
     
     func copyOfData() {
         copyGameWords = gameWords.words
+    }
+    
+    func winner() -> Bool {
+      return copyGameWords.isEmpty
     }
 }

@@ -50,7 +50,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } //below is used to allow the user to delete when they made a mistake
         let char = string.cString(using: String.Encoding.utf8)!
         let isBackSpace = strcmp(char, "\\b")
-        print(isBackSpace)
         if !letterBank.contains(string) && isBackSpace != -92 { //this is how backspace is used
             resultLabel.text = "Invalid Input"
             return false
@@ -79,6 +78,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             gameReference.removeCorrectWords(para: textFieldText)
             correctGuessedWords.text = "\(gameReference.guessedWords)"//or .description
             wordsToStarsTextView.text = "\(gameReference.wordsToStars())"
+            if gameReference.winner() {
+                resultLabel.text = "YOU WON!! 🥳"
+                wordsToStarsTextView.isHidden = true
+            }
         } else {
             resultLabel.text = "NO! Try Again!👿"
             resetLetterBank()
