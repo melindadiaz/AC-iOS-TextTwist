@@ -42,6 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         resetLetterBank()
         resultLabel.text = ""
         userTextField.text = ""
+        correctGuessedWords.text = ""
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
