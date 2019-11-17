@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         letterBank = gameReference.setLetterBank(para: gameReference.gameWords.letters)
         gameReference.copyOfData()
         wordsToStarsTextView.text = "\(gameReference.wordsToStars())"// or .description
+        resultLabel.isHidden = true
         
     }
     
@@ -52,6 +53,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let char = string.cString(using: String.Encoding.utf8)!
         let isBackSpace = strcmp(char, "\\b")
         if !letterBank.contains(string) && isBackSpace != -92 { //this is
+            resultLabel.isHidden = false
             resultLabel.text = "Invalid Input"
             return false
         }
@@ -72,6 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             resultLabel.text = "You said that already! Duh! 😒"
             
         } else if gameReference.copyGameWords.contains(textFieldText) {
+            resultLabel.isHidden = false
             resultLabel.text = "Correct Guess! 🤡"
             resetLetterBank()
             textField.text = ""
@@ -80,10 +83,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             correctGuessedWords.text = "\(gameReference.guessedWords)"//or .description
             wordsToStarsTextView.text = "\(gameReference.wordsToStars())"
             if gameReference.winner() {
+                resultLabel.isHidden = false
                 resultLabel.text = "YOU WON!! 🥳"
                 wordsToStarsTextView.isHidden = true
             }
         } else {
+            resultLabel.isHidden = false
             resultLabel.text = "NO! Try Again!👿"
             resetLetterBank()
             textField.text = ""
@@ -111,6 +116,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         gameReference.removedLetters.removeAll()
         
     }
+    
+    
+    
     
 }
 
